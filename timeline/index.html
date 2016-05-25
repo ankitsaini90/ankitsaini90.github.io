@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Timeline</title>
+		<link href="timeline.css" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet" type="text/css">
+		<script src="jquery.js"></script>	
+		<script src="timeline.js"></script>
+	</head>
+	<style>
+	body{
+		background: #FBFBFB;
+    	color: #535252;
+	}
+	.wrap{
+		margin:0 auto;
+		width: 985px;
+	}
+	.dispIB{
+		display: inline-block;
+	}
+	.legend-box{		
+	    width: 18px;
+	    height: 10px;
+	    margin-right: 10px;
+	}
+	.mr10{
+		margin-right: 10px;
+	}
+	.tltp{
+		width: 200px;
+    /* background-color: white; */
+	    background-color: #fff;
+	    border: 1px solid #B7B7B7;
+	    padding: 10px;
+	    z-index: 9;
+	    font-size: 13px;
+	    position: relative;    
+        margin-top: 15px;
+	}
+	.title{
+		position: relative;
+	    margin: 50px 0;
+	    text-align: center;
+	    font-size: 30px;
+	}
+
+	</style>
+	<body>
+		<div class="timelineContainer" id="timelineContainer1" style="position:relative;margin:0 auto;margin-top:100px;width:80%;"></div>
+
+		<div class="timelineContainer" id="timelineContainer2" style="position:relative;margin:0 auto;margin-top:100px;width:80%;"></div>
+		<div class="wrap">
+			<!-- <div class="title">Career Timeline</div> -->
+			<!-- <div id="timelineContainer3"></div> -->
+
+			<!-- <div style="margin: 100px auto;border: 1px solid;padding: 30px;width: 300px;">
+				<div>
+					<div class="legend-box dispIB" style="background-color: rgb(44, 168, 194);"></div>
+					<div class="dispIB">First employment</div>
+				</div>
+				<div>
+					<div class="legend-box dispIB" style="background-color: rgb(7, 118, 141);"></div>
+					<div class="dispIB">Second employment</div>
+				</div>
+				<div>
+					<div class="legend-box dispIB" style="background-color: rgb(241, 241, 241);"></div>
+					<div class="dispIB">Education between employments</div>
+				</div>
+				<div>
+					<div class="legend-box dispIB" style="background-color: rgb(207, 141, 0);"></div>
+					<div class="dispIB">Gap between employments</div>
+				</div>
+				<div>
+					<em class="iconEduPinSmall mr10" style="position:static;"></em>
+					<div class="dispIB">Icon depicting Education gap</div>
+				</div>
+				<div>
+					<em class="iconLastUpdate mr10" style="position:static;"></em>
+					<div class="dispIB">Icon depicting last modified Date</div>
+				</div>
+				<div style="margin-top:20px;">
+					<div>Tooltip</div>
+					<div class="tltp">
+						<div>Organistion Name</div>
+						<div>Designation</div>
+						<div>Start date - End Date (Total time)</div>
+						<em class="iconTltp arrowTopLeft"></em>
+					</div>
+				</div>
+			</div> -->
+		</div>
+
+		<script type="text/javascript">
+
+		var liveObj={
+				intervalList:{
+					"0":{
+						"startDate":"Aug 1899",
+						"endDate":"May 2000",
+						"tooltip":"<div>Relationship Manager</div><div>Nirmal Bang Securities pvt ltd</div>",
+					},
+					"1":{
+						"startDate":"Aug 1999",
+						"endDate":"May 2001",
+						"tooltip":"<div>Relationship Manager</div><div>Nirmal Bang Securities pvt ltd</div>",
+					},
+					"2":{
+						"startDate":"Aug 2003",
+						"endDate":"May 2004",
+						"tooltip":"<div>Relationship Manager</div><div>Nirmal Bang Securities pvt ltd</div>",
+					},
+					"3":{
+						"startDate":"Aug 2004",
+						"endDate":"May 2005",
+						"tooltip":"<div>Relationship Manager</div><div>Nirmal Bang Securities pvt ltd</div>",
+					},
+					"4":{
+						"startDate":"Aug 2005",
+						"endDate":"May 2006",
+						"tooltip":"<div>Relationship Manager</div><div>Nirmal Bang Securities pvt ltd</div>",
+					},
+					"5":{
+						"startDate":"Aug 2006",
+						"endDate":"May 2007",
+						"tooltip":"<div>Relationship Manager</div><div>Nirmal Bang Securities pvt ltd</div>",
+					},
+					"6":{
+						"startDate":"Aug 2007",
+						"endDate":"May 2008",
+						"tooltip":"<div>Relationship Manager</div><div>Nirmal Bang Securities pvt ltd</div>",
+					},
+					"7":{
+						"startDate":"Aug 2008",
+						"endDate":"May 2009",
+						"tooltip":"<div>Relationship Manager</div><div>Nirmal Bang Securities pvt ltd</div>",
+					},
+					"8":{
+						"startDate":"Aug 2009",
+						"endDate":"May 2012",
+						"tooltip":"<div>Relationship Manager</div><div>Nirmal Bang Securities pvt ltd</div>",
+					},
+					"9":{
+						"startDate":"Aug 2012",
+						"endDate":"May 2013",
+						"tooltip":"<div>Relationship Manager</div><div>Nirmal Bang Securities pvt ltd</div>",
+					},					
+					"10": {
+						startDate: "Nov 2014",
+						endDate: "March 2015",
+						highlight:{
+							'0':{
+								date:'Jan 2015',
+								tooltip:'<div>higlight Jan1</div>'
+							},
+							'1':{
+								date:'Feb 2015',
+								tooltip:'<div>higlight Feb1</div>'
+							}
+						},
+						"tooltip":"<div>Java Developer</div><div>Compare Infobase</div>",
+						// "status":"Current",						
+					},
+					"11": {
+						startDate: "May 2015",
+						endDate: "March 2016",
+						highlight:{
+							'0':{
+								date:'Oct 2015',
+								tooltip:'<div>higlight Oct2</div>'
+							},
+							'1':{
+								date:'Feb 2016',
+								tooltip:'<div>higlight Feb2</div>'
+							}
+						},
+						"tooltip":"<div>Java Developer</div><div>Compare Infobase</div>",
+						"status":"Current",						
+					},
+				},
+				gapText:'<div>No Data</div>',
+			};
+		// console.log(liveObj);
+			var timelineData1={
+				intervalList:{
+					"0": {
+						startDate: "May 2010",
+						endDate: "May 2011",
+						highlight:{
+							'0':{
+								date:'Nov 2010',
+								tooltip:'<div>Feature discussion complete</div>'
+							},
+							'1':{
+								date:'Feb 2011',
+								tooltip:'<div>Related designs complete</div>'
+							},
+							'2':{
+								date:'May 2011',
+								tooltip:'<div>Technical Discussion complete</div>'
+							}
+						},
+						"tooltip":"<div>Phase 1 : Project Discussion</div><div>Points of discussion<ul><li>Feature Discussion</li><li>Design Discussion</li><li>Technical Discussion</li></ul></div>",
+						// "status":"Current",						
+					},
+					
+					"1": {
+						startDate: "April 2011",
+						endDate: "May 2013",
+						highlight:{
+							'0':{
+								date:'July 2011',
+								tooltip:'<div>Common Features Developed</div>'
+							},
+							'1':{
+								date:'Aug 2012',
+								tooltip:'<div>Database schema complete</div>'
+							},
+							'2':{
+								date:'April 2013',
+								tooltip:'<div>Project integration complete</div>'
+							}
+						},
+						"tooltip":"<div>Phase 2 : Technical Development</div><div>Phases of Implementation<ul><li>Common Features</li><li>Database Design</li><li>Integration</li></ul></div>",
+						// "status":"Current",						
+					},
+					"2": {
+						startDate: "Jun 2013",
+						endDate: "Nov 2013",
+						highlight:{
+							'0':{
+								date:'Sep 2013',
+								tooltip:'<div>Manual Testing Complete</div>'
+							},
+							'1':{
+								date:'Nov 2013',
+								tooltip:'<div>Automation Testing Complete</div>'
+							},
+						},
+						"tooltip":"<div>Phase 3 : Testing</div><div>Phases of Testing<ul><li>Manual Testing</li><li>Automation Testing</li></ul></div>",
+						// "status":"Current",						
+					}
+				}
+			};
+
+			var timelineData2 = {
+			    totalTime: {
+			        startDate: "May 1995",
+			        endDate: "Mar 2015",
+			        months: 239
+			    },
+			    companies: {
+			        "0": {
+			            startDate: "May 1995",
+			            endDate: "April 1998",
+			            months: 36,
+			            index:10,
+			            designation: "Lead Software Engineer",
+			            companyName:"CSC"
+			        },
+			        "1": {
+			            startDate: "May 1998",
+			            endDate: "August 2006",
+			            months: 100,
+			            index:9,
+			            designation: "Lead Software Engineer",
+			            companyName:"Naukri.com"
+			        },
+			        "2":{
+			        	startDate: "December 2006",
+			            endDate: "May 2007",
+			            months: 6,
+			            index:8,
+			            designation: "Lead Software Engineer",
+			             companyName:"Google"
+			        },
+			        "3": {
+			            startDate: "October 2009",
+			            endDate: "October 2011",
+			            months: 25,
+			            index:7,
+			            designation: "Senior Lead Software Engineer",
+			            companyName:"Sapient"
+			        },
+			        "4": {
+			            startDate: "May 2012",
+			            endDate: "November 2014",
+			            months: 31,
+			            index:6,
+			            designation: "Engineering Manager",
+			            companyName:"Infoedge"
+			        },			       
+			        "5": {
+			            startDate: "November 2014",
+			            endDate: "March 2015",
+			            months: 5,
+			            index:1,
+			            designation: "Engineering Manager",
+			            companyName:"Infoedge",
+			            status:"current"
+			        },
+			    },
+			    education: {
+			        2008: {
+			            course: "PGDM",
+			            specialization: "Finance",
+			            institute: "IIM Ahmedabad"
+			        }
+			    },
+			    lastUpdate: "July 2011"
+			};
+
+			console.time('test');
+
+			// if (timelineData1 !== null && !$('body').hasClass('ie7')) {
+			    // $('#timelineContainer1').timeline({
+			    // 	data:timelineData1,
+			    // 	empColor1:'red',
+			    // 	empColor2:'orange',
+			    // 	eduColor:'pink',
+			    // 	afterPlotClb:function(freeTime){
+			    // 		console.log(freeTime);
+			    // 	}
+			    // });
+
+			    $('#timelineContainer2').timeline({
+			    	data:timelineData1	,
+			    	// spanColor1:'green',
+			    	// spanColor2:'gray',  	
+			    	// specialIntervalColor:'yellow',
+			    	// noRecordColor:'blue',
+			    	// afterPlot:function(freeTime){
+			    	// 	console.log(freeTime);
+			    	// }
+			    });
+
+			    // $('#timelineContainer1').timeline({
+			    // 	data:timelineData1	,
+			    // 	// spanColor1:'green',
+			    // 	// spanColor2:'gray',  	
+			    // 	// specialIntervalColor:'yellow',
+			    // 	// noRecordColor:'blue',
+			    // 	// afterPlot:function(freeTime){
+			    // 	// 	console.log(freeTime);
+			    // 	// }
+			    // });
+			// }
+			console.timeEnd('test');
+		</script>
+	</body>
+	
+</html>
