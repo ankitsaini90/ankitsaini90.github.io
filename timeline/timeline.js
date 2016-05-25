@@ -1,4 +1,4 @@
-// /*! scrollNav - v1.0.0 - 24-may-2016
+// *Timeline - v1.0.0 - 24-may-2016
 // * Copyright (c) 2016 Ankit Saini; Licensed MIT */
 /*
  * jQuery Timeline Plugin
@@ -47,7 +47,6 @@
                 var diffrenceBetween = 0,
                     diffrenceBetweenCommonTime = 0;
                 if (spanArr.length > 1) {
-                    //for (var i = spanArr.length - 1; i >= 0; i--) {
                     date2 = new Date(spanArr[currentSpan].startDate);
                     date1 = new Date(spanArr[currentSpan - 1].endDate);
                     diffrenceBetween = monthDiff(date1, date2, 'in');
@@ -74,9 +73,7 @@
                 highlightObj = [];
 
                 if (spanDetails.highlight) {
-                    // highlightObj = [];
                     for (var key in spanDetails.highlight) {
-                        // console.log(tempPtr);
                         var date = spanDetails.highlight[key].date;
                         if (checkIfDateInBetween(spanDetails.startDate, spanDetails.endDate, date)) {
                             highlightObj.push({
@@ -225,10 +222,16 @@
             return timelineObj;
         }
 
+        /*
+        function for appending 1 in dates for firefox issue
+         */
         function concatOne(date) {
             return "1 " + date;
         }
 
+        /*
+        for calculating months gap between dates
+         */
         function getMonthRanges(startDate, endDate) {
             var startYear = (new Date(startDate).getMonth()) ? new Date(startDate).getFullYear() + 1 : new Date(startDate).getFullYear(),
                 endYear = new Date(endDate).getFullYear(),
@@ -377,11 +380,11 @@
 
                     if ((dimensions.windowWidth - $(_this).offset().left) < dimensions.leftRightGap) {
                         var tooltipCont = '<div class="timelineTooltip tltpLeft">' +
-                            '<div class="spanName"><em class="iconTltp arrowTopRight"></em>' + (timelineData.gapText ? timelineData.gapText : '<div> class="bold">Gap </div>') + '<div class="exp">' + startD + (endD == '' ? '' : ' - ' + endD) + ' (' + timeDiff + ')</div></div>' +
+                            '<div class="spanName"><em class="iconTltp arrowTopRight"></em>' + (timelineData.gapText ? timelineData.gapText : '<div class="bold">No Record</div>') + '<div class="exp">' + startD + (endD == '' ? '' : ' - ' + endD) + ' (' + timeDiff + ')</div></div>' +
                             '</div>';
                     } else {
                         var tooltipCont = '<div class="timelineTooltip tltpRight">' +
-                            '<div class="spanName"><em class="iconTltp arrowTopLeft"></em>' + (timelineData.gapText ? timelineData.gapText : '<div class="bold">Gap </div>') + '<div class="exp">' + startD + (endD == '' ? '' : ' - ' + endD) + ' (' + timeDiff + ')</div></div>' +
+                            '<div class="spanName"><em class="iconTltp arrowTopLeft"></em>' + (timelineData.gapText ? timelineData.gapText : '<div class="bold">No Record</div>') + '<div class="exp">' + startD + (endD == '' ? '' : ' - ' + endD) + ' (' + timeDiff + ')</div></div>' +
                             '</div>';
                     }
                     return tooltipCont;
@@ -398,7 +401,6 @@
         /*
         function to plot timeline
          */
-
         function plotInTable(ptr, color, desc, className, type) {
             var month = timelineOptions.node.find('.timeline').children().eq(ptr).css('backgroundColor', color);
             if (className !== undefined) {
@@ -438,9 +440,8 @@
 
     $.fn.timeline = function(options) {
 
-        $.each(this, function(a, b) {
+        return $.each(this, function(a, b) {
             var obj = null;
-            /** If options are given each time a new object will be returned otherwise last configure object will be returend*/
             if (options) {
                 options.node = $(b);
                 obj = new constructor(options);

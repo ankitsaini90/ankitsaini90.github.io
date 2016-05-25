@@ -6,10 +6,11 @@ Timeline plugin is a way to visually represent any event across years. It is a s
 - Plots the events with custom tooltip data across years.
 - Highlight the months specified within an interval with a marker.
 - Custom tooltip data support for the highlighted month.
+- Plot gaps between two events with custom tooltip data support.
 
 
 #### Demo
-[Try out the demo: ](http://naukri-engineering.github.io/accordion/)
+[Try out the demo: ](http://ankitsaini90.github.io/timeline/)
 
 #### Implementation
 * HTML 
@@ -31,13 +32,11 @@ Timeline plugin is a way to visually represent any event across years. It is a s
 
 Name  | Default Value | Description
 ----|-----|-----
-data |  | Object of employment details(Mandotory).Format given in example. 
-empColor1 | #2CA8C2 | Color for first employment. 
-empColor2 | #07768D | Color for second employment. 
-noRecordColor| #CF8D00| Color for gap
-eduColor | #f1f1f1 | Color for education. 
-afterPlotClb |  | Callback function will be called after timeline is plotted.First argument will be array of freetime between employments. 
-
+data |  | Object of employment details(Mandatory).Format given in example. 
+spanColor1 | #2CA8C2 | Color for first employment. 
+spanColor2 | #07768D | Color for second employment. 
+noRecordColor| #CF8D00| Color for gap 
+afterPlot |  | Callback function will be called after timeline is plotted.
 
 
 #### Example
@@ -135,4 +134,7 @@ $('#timelineContainer').timeline({
 
 #### License
 MIT
+
+#### Author
+[Ankit Saini ](https://github.com/ankitsaini90/)
 
